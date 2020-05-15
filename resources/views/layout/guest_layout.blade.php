@@ -40,7 +40,7 @@
 
           <ul class="nav navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{{route('user.index')}}"><span class="fas fa-user"></span> Sign Up</a>
+              <a class="nav-link" href="{{route('register.index')}}"><span class="fas fa-user"></span> Sign Up</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('login.index')}}"><span class="fas fa-sign-in-alt"></span> Login</a>

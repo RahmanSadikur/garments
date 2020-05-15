@@ -16,8 +16,15 @@ class CategoryController extends Controller
     {
         //
         $category=Category::all();
-        printf($category);
+
         return view('guest.category',['category'=>$category]);
+    }
+    public function showall()
+    {
+        //
+        $category=Category::all();
+
+        return view('customer.category',['category'=>$category]);
     }
 
     /**

@@ -55,6 +55,13 @@ class SubCategoryController extends Controller
            ->get();
            return view('guest.subcategory',['subcategory'=>$subcategory]);
     }
+    public function showallc($cid)
+    {
+        //
+        $subcategory=SubCategory::where('cid', $cid)
+           ->get();
+           return view('customer.subcategory',['subcategory'=>$subcategory]);
+    }
 
     /**
      * Show the form for editing the specified resource.

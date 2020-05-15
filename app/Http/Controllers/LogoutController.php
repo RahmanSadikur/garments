@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class LogoutController extends Controller
 {
     /**
@@ -11,11 +11,12 @@ class LogoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
+
     public function index(Request $req){
-    	
+
     	//$req->session()->forget('uname');
-    	$req->session()->flush();
+        $req->session()->flush();
+        Auth::logout();
 
     	return redirect('/login');
     }

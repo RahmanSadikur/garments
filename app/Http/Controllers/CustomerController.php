@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\customer;
+use App\Item;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -15,6 +16,8 @@ class CustomerController extends Controller
     public function index()
     {
         //
+        $items=Item::all();
+        return view('customer.index',['items'=>$items]);
     }
 
     /**

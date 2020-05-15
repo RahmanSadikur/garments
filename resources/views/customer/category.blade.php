@@ -5,7 +5,7 @@
     <div class="row">
         @for($i=0;$i<$category->count();$i++)
         <div class="col-sm-4">
-            <a href="{{ route('subcategory.showall',$category[$i]->cid) }}" >
+            <a href="{{ route('subcategory.showallc',$category[$i]->cid) }}" >
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="..." alt="">
                 <div class="card-body">

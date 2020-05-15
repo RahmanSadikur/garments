@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Favourite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FavouriteController extends Controller
 {
@@ -15,8 +16,14 @@ class FavouriteController extends Controller
     public function index()
     {
         //
-    }
+        $fav = DB::table('favourite')
+            ->join('item', 'favourite.iid', '=', 'item.iid')
+            ->where('favourite.uid',session('uid'))
+            ->select('favourite.fid', 'item.*')
+            ->get();
+            return view('customer.favourite',['items'=>$fav]);
 
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -25,6 +32,7 @@ class FavouriteController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -36,6 +44,15 @@ class FavouriteController extends Controller
     public function store(Request $request)
     {
         //
+        $fav=new Favourite;
+        $fav->iid=$request->iid;
+        $fav->uid=session('uid');
+        if($fav->save())
+        {
+           return redirect()->route('customer.index');
+        }
+        return redirect()->route('customer.index');
+
     }
 
     /**
@@ -78,8 +95,10 @@ class FavouriteController extends Controller
      * @param  \App\Favourite  $favourite
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Favourite $favourite)
+    public function destroy($fid)
     {
         //
+        if(Favourite::destroy($fid))
+            {return redirect()->route('favourite.index');}
     }
 }

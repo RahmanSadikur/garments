@@ -3,21 +3,20 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        @for($i=0;$i<$category->count();$i++)
+        @for($i=0;$i<$subcategory->count();$i++)
         <div class="col-sm-4">
-            <a href="{{ route('subcategory.showall',$category[$i]->cid) }}" >
+            <a href="{{ route('item.showallc',$subcategory[$i]->scid) }}">
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="..." alt="">
                 <div class="card-body">
                     <div class="card-header">
-                        {{ $category[$i]->cname }}
+                        {{ $subcategory[$i]->scname }}
                       </div>
 
-
+                  Buy here
                 </div>
               </div>
             </a>
-
 
         </div>
     <br/>

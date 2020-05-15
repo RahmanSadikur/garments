@@ -15,6 +15,8 @@ class OrderLogController extends Controller
     public function index()
     {
         //
+        $order=OrderLog::all();
+        return view('customer.orderlog',['order'=>$order]);
     }
 
     /**

@@ -55,6 +55,13 @@ class ItemController extends Controller
           ->get();
            return view('guest.index',['items'=>$item]);
     }
+    public function showallc($scid)
+    {
+        //
+        $item=item::where('scid', $scid)
+          ->get();
+           return view('customer.index',['items'=>$item]);
+    }
     /**
      * Show the form for editing the specified resource.
      *

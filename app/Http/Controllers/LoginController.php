@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\Auth;
 use App\User;
 
 use Illuminate\Http\Request;
@@ -14,9 +16,26 @@ class LoginController extends Controller
      */
 
     public function index(Request $req){
-    	return view('login.index');
+    	return view('auth.login');
     }
 
+    public function authenticate(Request $request)
+    {
+        //$credentials = $request->only('email', 'password');S
+
+        //if (Auth::attempt($credentials)) {
+          if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+             $uid=$request->user();
+             $request->session()->put('uid', $uid->uid);
+            // Authentication passed...
+            $request->session()->put('email', $request->email);
+            $request->session()->put('password',$request->password);
+            return redirect()->route('customer.index');
+        }
+        else{
+            return redirect()->route('login.index');
+        }
+    }
     public function verify(Request $req){
 
 

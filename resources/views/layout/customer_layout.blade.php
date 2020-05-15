@@ -66,10 +66,10 @@
 		<!-- Sidebar Navigation -->
 		<nav class="sidebar_nav">
 			<ul>
-                <li><a href="{{route('guest.index')}}">home<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                <li><a href="{{route('customer.index')}}">home<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
                 <li><a href="{{route('user.profile')}}">Profile<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
 
-				<li><a href="{{route('category.index')}}">Category<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+				<li><a href="{{route('category.showall')}}">Category<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
                 <li><a href="{{route('favourite.index')}}">Favourite<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
                 <li><a href="{{route('order.index')}}">Order History<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
                 <li><a href="{{route('payment.index')}}">Payment History<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>

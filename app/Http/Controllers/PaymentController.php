@@ -15,6 +15,14 @@ class PaymentController extends Controller
     public function index()
     {
         //
+        $payment=Payment::all();
+        view('customer.payment',['payment'=>$payment]);
+    }
+    public function showall()
+    {
+        //
+        $payment=Payment::all();
+        view('customer.payment',['payment'=>$payment]);
     }
 
     /**

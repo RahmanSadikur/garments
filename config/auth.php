@@ -12,7 +12,7 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
-
+    'table' => 'users',
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
@@ -68,13 +68,14 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
+            'table' => 'users',
             'model' => App\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+         'user' => [
+             'driver' => 'database',
+            'table' => 'users',
+         ],
     ],
 
     /*
@@ -93,7 +94,7 @@ return [
     */
 
     'passwords' => [
-        'users' => [
+        'user' => [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,

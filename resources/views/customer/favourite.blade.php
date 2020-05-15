@@ -13,21 +13,20 @@
                       </div>
                   <h5 class="card-title">{{ $items[$i]->iprice }}</h5>
                   <p class="card-text">{{ $items[$i]->description }}</p>
-                  <form method="POST" action="{{ route('favourite.store') }}">
-                    <input type="text" name="iid" value="{{ $items[$i]->iid }}" hidden>
-                  <input type="submit" class="btn btn-primary" value="Add to Fav">
+                  <form method="POST" action="{{ route('favourite.destroy',$items[$i]->fid) }}">
+
+                  <input type="submit" class="btn btn-primary" value="Remove">
                   {{ csrf_field() }}
+                  {{ method_field('delete') }}
                   </form>
-                  <form method="POST" action="{{ route('cart.store') }}">
-                    <input type="text" name="iid" value="{{ $items[$i]->iid }}" hidden>
-                    <input type="submit" class="btn btn-success" value="Add to Cart">
-                    {{ csrf_field() }}
-                    </form>
+
                 </div>
               </div>
         </div>
     <br/>
         @endfor
+
+</div>
 
 </div>
 @endsection
