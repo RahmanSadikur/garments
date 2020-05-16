@@ -18,7 +18,7 @@
                   <input type="submit" class="btn btn-primary" value="Add to Fav">
                   {{ csrf_field() }}
                   </form>
-                  <form method="POST" action="{{ route('cart.store') }}">
+                  <form method="POST" action="{{ route('cart.addcart',$items[$i]) }}">
                     <input type="text" name="iid" value="{{ $items[$i]->iid }}" hidden>
                     <input type="submit" class="btn btn-success" value="Add to Cart">
                     {{ csrf_field() }}

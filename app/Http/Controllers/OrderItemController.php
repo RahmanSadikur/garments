@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Item;
 use App\OrderItem;
+use App\OrderLog;
 use Illuminate\Http\Request;
+Use \Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class OrderItemController extends Controller
 {
@@ -15,6 +18,46 @@ class OrderItemController extends Controller
     public function index()
     {
         //
+        $fav = DB::table('orderitem')
+        ->join('orderlog', 'orderlog.olid', '=', 'orderitem.olid')
+        ->join('item', 'item.iid', '=', 'orderitem.iid')
+        ->where('orderlog.uid',session('uid'))
+        ->where('orderlog.status','inactive')
+        ->select('orderitem.*','item.iname')
+        ->get();
+        return view('customer.cart',['items'=>$fav]);
+
+    }
+    public function addcart(Item $item ,Request $req)
+    {
+        //
+        $order=OrderLog::where('status','inactive' )->first();
+        if($order==null){
+
+            $order=new OrderLog;
+            $order->uid=session('uid');
+            $order->date= Carbon::now();
+            $order->status='inactive';
+            $order->save();
+
+        }
+        return view('customer.addcart',['items'=>$item]);
+
+    }
+    public function additemcart(Request $req )
+    {
+        //
+        $order=OrderLog::where('status','inactive' )->first();
+        $cart=new OrderItem;
+        $cart->iid=$req->iid;
+        $cart->quantity=$req->quantity;
+        $cart->price=$req->price*$req->quantity;
+        $cart->olid=$order->olid;
+        if($cart->save())
+        {
+            return redirect()->route('customer.index');
+        }
+
     }
 
     /**
@@ -67,9 +110,15 @@ class OrderItemController extends Controller
      * @param  \App\OrderItem  $orderItem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OrderItem $orderItem)
+    public function update(Request $request,$id)
     {
         //
+        $item=Item::where('iid', $request->iid)->first();
+        $cart=OrderItem::where('otid', $id)->first();
+        $cart->quantity=$request->quantity;
+        $cart->price=$item->iprice*$request->quantity;
+        $cart->save();
+        return redirect()->route('cart.index');
     }
 
     /**

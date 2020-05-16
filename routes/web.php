@@ -34,6 +34,8 @@ Route::group(['middleware'=>['sess']], function(){
 
     ]);
     Route::get('/user/profile', 'LoginController@index')->name('user.profile');
+    Route::post('/cart/addcart/{item}', 'OrderItemController@addcart')->name('cart.addcart');
+    Route::post('/cart/additemcart', 'OrderItemController@additemcart')->name('cart.additemcart');
 
 
 });

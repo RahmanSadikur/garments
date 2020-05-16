@@ -15,7 +15,8 @@ class OrderLogController extends Controller
     public function index()
     {
         //
-        $order=OrderLog::all();
+        $order=OrderLog::where('status','active')
+        ->where('uid',session('uid'))->get();
         return view('customer.orderlog',['order'=>$order]);
     }
 
