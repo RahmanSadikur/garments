@@ -78,17 +78,10 @@ class OrderLogController extends Controller
         $order=OrderLog::where('olid', $olid)->first();
         $order->status='active';
         $order->save();
+        return  redirect()->route('order.index');
 
     }
-    public function activeorder(Request $request)
-    {
-        //
-        $olid=$request->input('olid');
-        $order=OrderLog::where('olid', $olid)->first();
-        $order->status='active';
-        $order->save();
-        return  redirect()->route('payment.index');
-    }
+
 
     /**
      * Remove the specified resource from storage.

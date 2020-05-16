@@ -28,7 +28,7 @@ class PaymentController extends Controller
 
 
     }
-    public function showall()
+    public function showpayment()
     {
         //
 
@@ -39,7 +39,7 @@ class PaymentController extends Controller
 
 
         ->get();
-        view('customer.payment',['payment'=>$payment]);
+       return view('customer.payment',['payment'=>$payment]);
     }
 
     /**

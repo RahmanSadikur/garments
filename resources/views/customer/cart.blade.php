@@ -55,30 +55,21 @@
 
 
             </form>
-                </div>
-            </div>
-        </div>
-         <div class="row" hidden>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
             <form method="POST" action="{{ route('order.update', $items[0]->olid) }}">
 
-               <p>Order ID: <input type="text" name="olid" value="{{ $items[0]->olid }}" class="form-control"id="olid" readonly></p>
-
-                <input type="submit" value="Make Payment" class="btn btn-info" id="update">
-
-            {{ csrf_field() }}
-            {{ method_field('put') }}
 
 
-            </form>
+                 <input type="submit" value="Confirm Order" class="btn btn-info" id="update">
+
+             {{ csrf_field() }}
+             {{ method_field('put') }}
+
+
+             </form>
                 </div>
             </div>
         </div>
-        <div class="col-sm-3"></div>
-    </div>
+
 
 
 </div>
@@ -88,14 +79,3 @@
   Guest Home
 @endsection
 
-
-<script>
-    jQuery(document).ready(function(){
-        alert();
-        $( "#paysub" ).click(function() {
-            $( "#update" ).trigger( "click" );
-            update( $( "span" ).last() );
-          });
-
-       });
- </script>

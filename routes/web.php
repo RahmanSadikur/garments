@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/login', 'LoginController@index')->name('login.index');
+Route::get('/payment/showpayment', 'PaymentController@showpayment')->name('payment.showpayment');
 
 
 Route::post('/login', 'LoginController@authenticate');
@@ -34,9 +35,9 @@ Route::group(['middleware'=>['sess']], function(){
         'favourite' => 'FavouriteController',
 
     ]);
-    Route::get('/pay/showall', 'PayController@showall')->name('pay.showall');
-    Route::any('/payment/index', 'PaymentController@index')->name('payment.index');
-    Route::get('/payment/showall', 'PaymentController@showall')->name('payment.showall');
+
+
+
 
     Route::any('/order/activeorder', 'OrderLogController@activeorder')->name('order.activeorder');
     Route::post('/cart/addcart/{item}', 'OrderItemController@addcart')->name('cart.addcart');
@@ -48,7 +49,7 @@ Route::get('/', function () {
     return redirect()->route('guest.index');
 });
 Route::get('/category/showall', 'CategoryController@showall')->name('category.showall');
-Route::get('/payment/showall', 'PaymentController@showall')->name('payment.showall');
+
 Route::get('/subcategory/showall/{cid}', 'SubCategoryController@showall')->name('subcategory.showall');
 Route::get('/item/showall/{scid}', 'ItemController@showall')->name('item.showall');
 Route::get('/subcategory/showallc/{cid}', 'SubCategoryController@showallc')->name('subcategory.showallc');

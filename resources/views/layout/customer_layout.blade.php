@@ -80,7 +80,7 @@
 				<li><a href="{{route('category.showall')}}">Category<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
                 <li><a href="{{route('favourite.index')}}">Favourite<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
                 <li><a href="{{route('order.index')}}">Order History<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                <li><a href="{{route('payment.index')}}">Payment History<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                <li><a href="{{route('payment.showpayment')}}">Payment History<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
 			</ul>
 		</nav>
 
