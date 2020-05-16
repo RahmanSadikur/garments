@@ -14,6 +14,10 @@
 <link rel="stylesheet" type="text/css" href="{{asset('website/styles/main_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('website/styles/responsive.css ')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('website/style/style.css')}}" />
+<link rel="stylesheet" href="{{asset('css/app.css')}}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.3/css/bootstrap.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.js"></script>
 </head>
 <body>
 
@@ -127,5 +131,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src=" {{asset('website/plugins/Isotope/isotope.pkgd.min.js ')}}"></script>
 <script src=" {{asset('website/plugins/Isotope/fitcolumns.js')}}"></script>
 <script src=" {{asset('website/js/custom.js')}}"></script>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+               integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+               crossorigin="anonymous">
+      </script>
+      <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <script>
 </body>
 </html>

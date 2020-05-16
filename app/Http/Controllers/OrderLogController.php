@@ -70,9 +70,24 @@ class OrderLogController extends Controller
      * @param  \App\OrderLog  $orderLog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OrderLog $orderLog)
+    public function update(Request $request, $olid)
     {
         //
+
+
+        $order=OrderLog::where('olid', $olid)->first();
+        $order->status='active';
+        $order->save();
+
+    }
+    public function activeorder(Request $request)
+    {
+        //
+        $olid=$request->input('olid');
+        $order=OrderLog::where('olid', $olid)->first();
+        $order->status='active';
+        $order->save();
+        return  redirect()->route('payment.index');
     }
 
     /**

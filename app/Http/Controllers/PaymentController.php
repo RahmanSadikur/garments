@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Payment;
+use App\OrderLog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PaymentController extends Controller
 {
@@ -15,13 +17,28 @@ class PaymentController extends Controller
     public function index()
     {
         //
-        $payment=Payment::all();
+        $payment=DB::table('payment')
+        ->join('orderlog', 'orderlog.olid', '=', 'payment.olid')
+
+        ->where('orderlog.uid',session('uid'))
+
+
+        ->get();
         view('customer.payment',['payment'=>$payment]);
+
+
     }
     public function showall()
     {
         //
-        $payment=Payment::all();
+
+        $payment=DB::table('payment')
+        ->join('orderlog', 'orderlog.olid', '=', 'payment.olid')
+
+        ->where('orderlog.uid',session('uid'))
+
+
+        ->get();
         view('customer.payment',['payment'=>$payment]);
     }
 
@@ -44,6 +61,15 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         //
+        $payment=new Payment;
+        $payment->olid=$request->olid;
+        $payment->date=$request->date;
+        $payment->amount=$request->amount;
+        $payment->status='active';
+        $payment->save();
+
+        return redirect()->route('payment.index');
+
     }
 
     /**

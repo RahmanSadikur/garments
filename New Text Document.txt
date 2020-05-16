@@ -1,0 +1,14 @@
+// Auth::routes();
+// route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+// route::post('login', 'Auth\LoginController@login');
+// route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// // Registration Routes...
+// route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+// route::post('register', 'Auth\RegisterController@register');
+
+// // Password Reset Routes...
+// route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+// route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+// route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+// route::post('password/reset', 'Auth\ResetPasswordController@reset');

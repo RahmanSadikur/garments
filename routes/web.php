@@ -20,6 +20,7 @@ Route::get('/login', 'LoginController@index')->name('login.index');
 
 Route::post('/login', 'LoginController@authenticate');
 
+
 Route::get('/logout', 'logoutController@index')->name('logout.index');
 
 Route::group(['middleware'=>['sess']], function(){
@@ -33,7 +34,11 @@ Route::group(['middleware'=>['sess']], function(){
         'favourite' => 'FavouriteController',
 
     ]);
-    Route::get('/user/profile', 'LoginController@index')->name('user.profile');
+    Route::get('/pay/showall', 'PayController@showall')->name('pay.showall');
+    Route::any('/payment/index', 'PaymentController@index')->name('payment.index');
+    Route::get('/payment/showall', 'PaymentController@showall')->name('payment.showall');
+
+    Route::any('/order/activeorder', 'OrderLogController@activeorder')->name('order.activeorder');
     Route::post('/cart/addcart/{item}', 'OrderItemController@addcart')->name('cart.addcart');
     Route::post('/cart/additemcart', 'OrderItemController@additemcart')->name('cart.additemcart');
 
@@ -48,13 +53,18 @@ Route::get('/subcategory/showall/{cid}', 'SubCategoryController@showall')->name(
 Route::get('/item/showall/{scid}', 'ItemController@showall')->name('item.showall');
 Route::get('/subcategory/showallc/{cid}', 'SubCategoryController@showallc')->name('subcategory.showallc');
 Route::get('/item/showallc/{scid}', 'ItemController@showallc')->name('item.showallc');
+Route::get('/item/showaitem/{iid}', 'ItemController@showitem')->name('item.showitem');
+Route::get('/item/showaitemg/{iid}', 'ItemController@showitemg')->name('item.showitemg');
+Route::get('/item/search', 'ItemController@search')->name('item.search');
+
 Route::resource('guest','GuestController')->only('index');
 Route::Resources([
 
     'category' => 'CategoryController',
     'subcategory' => 'SubCategoryController',
     'item' => 'ItemController',
-    'register' => 'RegisterController',
+    'register'=>'RegisterController',
+
 
 
 ]);
@@ -62,17 +72,4 @@ Route::Resources([
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-// Auth::routes();
-// route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-// route::post('login', 'Auth\LoginController@login');
-// route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-// // Registration Routes...
-// route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-// route::post('register', 'Auth\RegisterController@register');
-
-// // Password Reset Routes...
-// route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
-// route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-// route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
-// route::post('password/reset', 'Auth\ResetPasswordController@reset');

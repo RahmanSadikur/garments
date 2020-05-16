@@ -25,7 +25,11 @@ class OrderItemController extends Controller
         ->where('orderlog.status','inactive')
         ->select('orderitem.*','item.iname')
         ->get();
-        return view('customer.cart',['items'=>$fav]);
+        $olid=$fav[0]->olid;
+        $amount= DB::table('orderitem')->where('olid',$olid)->sum('price');
+
+
+        return view('customer.cart',['items'=>$fav,'amount'=>$amount]);
 
     }
     public function addcart(Item $item ,Request $req)
