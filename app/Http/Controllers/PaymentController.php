@@ -24,7 +24,7 @@ class PaymentController extends Controller
 
 
         ->get();
-        view('customer.payment',['payment'=>$payment]);
+        return view('customer.payment',['payment'=>$payment]);
 
 
     }

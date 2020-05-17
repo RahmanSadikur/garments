@@ -25,11 +25,17 @@ class OrderItemController extends Controller
         ->where('orderlog.status','inactive')
         ->select('orderitem.*','item.iname')
         ->get();
-        $olid=$fav[0]->olid;
-        $amount= DB::table('orderitem')->where('olid',$olid)->sum('price');
+        $order=OrderLog::where('status','inactive')->first();
+        $amount=null;
+        if($order ){
+            //$olid=$fav[0]->olid;
+            $amount= DB::table('orderitem')->where('olid',$order->olid)->sum('price');
+        }
 
 
-        return view('customer.cart',['items'=>$fav,'amount'=>$amount]);
+
+
+        return view('customer.cart',['items'=>$fav,'amount'=>$amount,'order'=>$order]);
 
     }
     public function addcart(Item $item ,Request $req)
@@ -131,8 +137,13 @@ class OrderItemController extends Controller
      * @param  \App\OrderItem  $orderItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(OrderItem $orderItem)
+    public function destroy($id)
     {
         //
+        if(OrderItem::destroy($id))
+            {return redirect()->route('cart.index');}
+
+
+
     }
 }
