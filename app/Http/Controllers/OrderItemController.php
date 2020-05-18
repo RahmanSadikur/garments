@@ -57,6 +57,12 @@ class OrderItemController extends Controller
     public function additemcart(Request $req )
     {
         //
+        $validatedData = $req->validate([
+
+            'quantity' => 'required',
+
+
+        ]);
         $order=OrderLog::where('status','inactive' )->first();
         $cart=new OrderItem;
         $cart->iid=$req->iid;

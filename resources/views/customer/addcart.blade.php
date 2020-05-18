@@ -18,7 +18,12 @@
                   <p class="card-text">{{ $items->description }}</p>
 
 
-                    <div class="card-body">Quantity:<input class="form-control" type="text" name="quantity" ></div>
+                    <div class="card-body">
+                        Quantity:<input class="form-control" type="text" name="quantity" >
+                        @error('quantity')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    </div>
 
 
 

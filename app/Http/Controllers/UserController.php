@@ -80,6 +80,13 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         //
+        $validatedData = $request->validate([
+
+            'uname' => 'required',
+            'email' => 'required',
+
+
+        ]);
         $user=User::where('uid', session('uid'))->first();
         $user->uname=$request->uname;
         $user->email=$request->email;

@@ -13,10 +13,16 @@
                    <div >
                        User Name:
                        <input type="text" class="form-control" name="uname" value="{{ $user->uname }}">
+                       @error('uname')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                    </div>
                    <div >
                     Email:
                     <input type="text" class="form-control" name="email" value="{{ $user->email }}">
+                    @error('email')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div >
                     User Name:
