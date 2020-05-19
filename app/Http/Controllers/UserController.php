@@ -53,7 +53,8 @@ class UserController extends Controller
     public function profile(Request $request)
     {
         //
-        $user=$request->user();
+        $user=User::where('uid', session('uid'))->first();
+       // $user=$request->user();
         return view('customer.profile',['user'=>$user]);
     }
 

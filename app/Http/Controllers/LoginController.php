@@ -48,25 +48,15 @@ class LoginController extends Controller
 
 
     	if($user != null ){
+            $req->session()->put('uid', $user->uid);
             $req->session()->put('email', $req->email);
             $req->session()->put('password',$req->password);
-
-            if($user->userTypeId==1)
-            {
-                return redirect()->route('admin.index');
-            }
-            else if($user->userTypeId==2){
-                return redirect()->route('manager.index');
-            }
-            else {
-                return redirect()->route('login.index');
-            }
-
+            return redirect()->route('customer.index');
 
     	}else{
             $req->session()->flash('msg', 'invalid username/password');
     		//return view('login.index');
-            return redirect('/login');
+            return redirect()->route('login.index');
     	}
     }
 

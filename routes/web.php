@@ -19,7 +19,8 @@ Route::get('/login', 'LoginController@index')->name('login.index');
 Route::get('/payment/showpayment', 'PaymentController@showpayment')->name('payment.showpayment');
 
 
-Route::post('/login', 'LoginController@authenticate');
+//Route::post('/login', 'LoginController@authenticate');
+Route::post('/login', 'LoginController@verify');
 
 
 Route::get('/logout', 'logoutController@index')->name('logout.index');
